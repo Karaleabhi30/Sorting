@@ -1,0 +1,40 @@
+public static void QuickSort(int arr[], int low, int high) {
+    if(low < high) {
+        int pi = partion(arr, low, high);
+
+        QuickSort(arr, low, pi-1);
+        QuickSort(arr, pi+1, high);
+    }
+}
+
+//
+
+public static int partion(int[] arr, int low, int high) {
+    int pivot  = arr[high];
+    int i = low-1;
+
+    for(int j=low; j<high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            //swap
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    //swap with pivot
+    i++;
+    int temp = arr[i];
+    arr[i] = arr[high];
+    arr[high]= temp;
+    return i;
+}
+
+
+
+Time Complexity
+worst : O(n^2)
+Average : O(nlogn)
+
+Important
+Worst case occurs when pivot is always the smallest or the largest element.
